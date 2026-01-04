@@ -1,0 +1,172 @@
+.page {
+    text-align: center;
+    width: 842px;
+    height: 595px;
+    padding: 20px;
+    /* border: 1px #D3D3D3 solid; */
+    border-radius: 5px;
+    background: rgb(255, 255, 239);
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    margin-bottom: 50px;
+}
+
+.subpage {
+    position: relative;
+    width: 802px;
+    height: 555px;
+    border: 1px solid #eee;
+    background: #fff;
+}
+
+.cer-ribbon-1 {
+    z-index: 99;
+    position: absolute;
+    left: 0px;
+}
+
+.cer-ribbon-2 {
+    z-index: 99;
+    position: absolute;
+    right: 0px;
+    bottom: 0px;
+}
+
+.cer-tr {
+    position: absolute;
+    right: 0px;
+}
+
+.cer-bl {
+    position: absolute;
+    left: 0px;
+    bottom: 0px;
+}
+
+.cer-box-1 {
+    position: absolute;
+    left: 36.33px;
+    top: 36.33px;
+    width: 727px;
+    height: 486px;
+    border: 1.17px solid #a6bbdb;
+}
+
+.cer-box-2 {
+    position: absolute;
+    top: 7.15px;
+    left: 7.15px;
+    width: 711px;
+    height: 472px;
+    border: 0.85px solid #a6bbdb;
+}
+
+.cer-sl-box {
+    position: absolute;
+    border: 2px solid #d5d5d5;
+    width: fit-content;
+    padding: 8px;
+    right: 15px;
+    top: 15px;
+    font-size: 11px;
+    font-weight: 500;
+}
+
+.cer-logo {
+    margin-top: 40px;
+}
+
+.cer-certificate {
+    margin-top: 25px;
+}
+
+.cer-medal {
+    position: absolute;
+    right: 90px;
+    top: 110px;
+}
+
+.cer-text-1 {
+    color: #265aa6;
+    margin-top: 15px;
+    font-size: 16px;
+}
+
+.cer-text-2 {
+    font-size: 13px;
+}
+
+.cer-text-name {
+    width: 500px;
+    margin-top: 30px;
+    color: #415e6c;
+    font-size: 32px;
+    font-weight: 700;
+    margin-left: 104.5px;
+    border-bottom: 1px solid #265aa6;
+}
+
+.cer-text-3 {
+    margin-top: 15px;
+    font-size: 18px;
+}
+
+.cer-b-date {
+    width: 150px;
+    position: absolute;
+    border: 20px;
+    left: 100px;
+    bottom: 40px;
+}
+
+.cer-b-qr {
+    width: 200px;
+    position: absolute;
+    border: 20px;
+    bottom: 40px;
+    right: 100px;
+    text-align: right;
+}
+
+.cer-b-sign {
+    width: 150px;
+    position: absolute;
+    border: 20px;
+    right: 100px;
+    bottom: 30px;
+}
+
+.cer-date {
+    border-bottom: 1px solid #555;
+    font-weight: 600;
+}
+
+.cer-sign {
+    border-bottom: 1px solid #555;
+    font-weight: 600;
+}
+
+.cer-text-blast {
+    width: 100%;
+    font-size: 12px;
+    position: absolute;
+    bottom: 5px;
+    font-style: italic;
+}
+
+@page {
+    size: A4 landscape;
+    margin: 0;
+}
+
+@media print {
+    .page {
+        margin: 0;
+        border: initial;
+        border-radius: initial;
+        width: initial;
+        min-height: initial;
+        box-shadow: initial;
+        background: initial;
+        page-break-after: always;
+    }
+}

@@ -1,0 +1,73 @@
+name: Deploy to Staging
+
+on:
+  push:
+    branches: [staging]
+
+env:
+  # Server Configuration
+  SERVER: ${{ secrets.STG_SERVER }}
+  USERNAME: ${{ secrets.STG_USERNAME }}
+  UPLOAD_PATH: ${{ secrets.STG_UPLOAD_PATH }}
+  GIT_REPO: ${{ secrets.GIT_REPO }}
+  SSH_KEY: ${{ secrets.STG_SSH_KEY }}
+  BYPASS_SECRET: ""
+
+  # Deployment Configuration
+  BRANCH: staging
+
+jobs:
+  deploy:
+    name: Deploy to Server
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Setup SSH for GitHub Actions to connect to your server
+      - name: Setup SSH
+        uses: webfactory/ssh-agent@v0.9.0
+        with:
+          ssh-private-key: ${{ env.SSH_KEY }}
+
+      # Step 2: Add server to known hosts to avoid interactive prompts
+      - name: Add server to known hosts
+        run: ssh-keyscan -H ${{ env.SERVER }} >> ~/.ssh/known_hosts
+
+      # Step 3: Deploy via Git on the server
+      - name: Deploy via Git
+        run: |
+          ssh -A ${{ env.USERNAME }}@${{ env.SERVER }} << 'EOF'
+            set -e
+            echo "🚀 Starting deployment version: ${{ env.BRANCH }}..."
+
+            cd ${{ env.UPLOAD_PATH }}
+
+            # Configure Git to use SSH agent forwarding
+            export GIT_SSH_COMMAND="ssh -o StrictHostKeyChecking=no"
+
+            # Add GitHub to known hosts
+            ssh-keyscan -H github.com >> ~/.ssh/known_hosts 2>/dev/null || true
+
+            # Initialize repo if not exists
+            if [ ! -d ".git" ]; then
+              echo "📁 Initializing new repository..."
+              git init
+              git remote add origin ${{ env.GIT_REPO }}
+              git fetch --all
+              git reset --hard origin/${{ env.BRANCH }}
+            else
+              echo "📁 Updating existing repository..."
+              git fetch --all
+              git reset --hard origin/${{ env.BRANCH }}
+            fi
+
+            echo "✅ Deployed version: ${{ env.BRANCH }}!"
+          EOF
+
+      - name: Optimize Laravel Application
+        run: |
+          ssh -A ${{ env.USERNAME }}@${{ env.SERVER }} << 'EOF'
+            set -e
+            echo "🚀 Executing optimize script..."
+            cd ${{ env.UPLOAD_PATH }}
+            sudo ./.scripts/laravel.sh
+          EOF

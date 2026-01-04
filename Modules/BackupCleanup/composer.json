@@ -1,0 +1,33 @@
+{
+    "name": "nwidart/backupcleanup",
+    "description": "",
+    "authors": [
+        {
+            "name": "Nicolas Widart",
+            "email": "n.widart@gmail.com"
+        }
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [],
+            "aliases": {
+
+            }
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Modules\\BackupCleanup\\": "app/",
+            "Modules\\BackupCleanup\\Database\\Factories\\": "database/factories/",
+            "Modules\\BackupCleanup\\Database\\Seeders\\": "database/seeders/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Modules\\BackupCleanup\\Tests\\": "tests/"
+        }
+    },
+    "require": {
+        "spatie/laravel-backup": "^9.1"
+    }
+}

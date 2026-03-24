@@ -213,29 +213,31 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @forelse($user->documents as $document)
-                                                <tr>
-                                                    <td>{{ ucfirst(str_replace('_', ' ', $document->document_type)) }}</td>
-                                                    <td>{{ $document->document_number ?? 'N/A' }}</td>
-                                                    <td>
-                                                        <a href="{{ \App\Services\FileManagerService::getFile($document->file_path) }}" target="_blank" class="btn btn-sm btn-info">View Front</a>
-                                                        @if($document->back_file_path)
-                                                            <a href="{{ \App\Services\FileManagerService::getFile($document->back_file_path) }}" target="_blank" class="btn btn-sm btn-info">View Back</a>
-                                                        @endif
-                                                    </td>
-                                                    <td>
-                                                        <span class="badge bg-{{ $document->status === 'verified' ? 'success' : ($document->status === 'rejected' ? 'danger' : 'warning') }}">
-                                                            {{ ucfirst($document->status) }}
-                                                        </span>
-                                                    </td>
-                                                    <td>{{ $document->expiry_date ? $document->expiry_date->format('d M Y') : 'N/A' }}</td>
-                                                    <td>{{ $document->created_at->format('d M Y h:i A') }}</td>
-                                                </tr>
-                                            @empty
+                                            @if($user->documents && count($user->documents) > 0)
+                                                @foreach($user->documents as $document)
+                                                    <tr>
+                                                        <td>{{ ucfirst(str_replace('_', ' ', $document->document_type)) }}</td>
+                                                        <td>{{ $document->document_number ?? 'N/A' }}</td>
+                                                        <td>
+                                                            <a href="{{ \App\Services\FileManagerService::getFile($document->file_path) }}" target="_blank" class="btn btn-sm btn-info">View Front</a>
+                                                            @if($document->back_file_path)
+                                                                <a href="{{ \App\Services\FileManagerService::getFile($document->back_file_path) }}" target="_blank" class="btn btn-sm btn-info">View Back</a>
+                                                            @endif
+                                                        </td>
+                                                        <td>
+                                                            <span class="badge bg-{{ $document->status === 'verified' ? 'success' : ($document->status === 'rejected' ? 'danger' : 'warning') }}">
+                                                                {{ ucfirst($document->status) }}
+                                                            </span>
+                                                        </td>
+                                                        <td>{{ $document->expiry_date ? $document->expiry_date->format('d M Y') : 'N/A' }}</td>
+                                                        <td>{{ $document->created_at->format('d M Y h:i A') }}</td>
+                                                    </tr>
+                                                @endforeach
+                                            @else
                                                 <tr>
                                                     <td colspan="6" class="text-center">No documents uploaded</td>
                                                 </tr>
-                                            @endforelse
+                                            @endif
                                         </tbody>
                                     </table>
                                 </div>

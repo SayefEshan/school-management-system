@@ -63,7 +63,7 @@
             <th width="10%" class="text-center">Actions</th>
         </tr>
 
-        @forelse($notifications as $notification)
+        @foreach($notifications as $notification)
             <tr>
                 <td>{{ $loop->iteration }}</td>
                 <td>{{ $notification->type }}</td>
@@ -119,11 +119,7 @@
                     </div>
                 </td>
             </tr>
-        @empty
-            <tr>
-                <td colspan="6" class="text-center">No notifications found</td>
-            </tr>
-        @endforelse
+        @endforeach
     </x-table-view-pagination>
 @endsection
 

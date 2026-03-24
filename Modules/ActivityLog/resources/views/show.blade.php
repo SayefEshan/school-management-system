@@ -15,8 +15,9 @@
 
     <div class="timeline timeline-center">
         <div class="timeline-container">
-            @forelse ($audits as $audit)
-                <div class="timeline-row {{ $loop->even ? 'timeline-row-end' : 'timeline-row-start' }}">
+            @if (count($audits) > 0)
+                @foreach ($audits as $audit)
+                    <div class="timeline-row {{ $loop->even ? 'timeline-row-end' : 'timeline-row-start' }}">
                     <div class="timeline-icon">
                         @if ($audit->event == 'created')
                             <div class="bg-success text-white">
@@ -155,7 +156,8 @@
                         </div>
                     </div>
                 </div>
-            @empty
+                @endforeach
+            @else
                 <div class="timeline-row timeline-row-full">
                     <div class="timeline-icon">
                         <div class="bg-secondary text-white">
@@ -174,7 +176,7 @@
                         </div>
                     </div>
                 </div>
-            @endforelse
+            @endif
         </div>
     </div>
 

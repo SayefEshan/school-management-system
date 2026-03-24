@@ -70,7 +70,7 @@
             @php
                 $i = $downloadImports->toArray()['from'] ?? 1;
             @endphp
-            @forelse ($downloadImports as $item)
+            @foreach ($downloadImports as $item)
                 @if (!in_array($item->status, ['Completed', 'Failed']))
                     <input type="hidden" name="ids[]" value="{{ $item->id }}">
                 @endif
@@ -120,11 +120,7 @@
                         </td>
                     @endcanany
                 </tr>
-            @empty
-                <tr>
-                    <td colspan="7" class="text-center">No Data Found</td>
-                </tr>
-            @endforelse
+            @endforeach
         </tbody>
     </x-table-view-pagination>
 @endsection

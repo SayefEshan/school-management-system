@@ -95,30 +95,32 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @forelse($recentUsers as $user)
-                            <tr>
-                                <td>
-                                    <div class="d-flex align-items-center">
-                                        <img src="{{ $user->image }}" class="user-avatar-small" alt="">
-                                        <span class="fw-semibold">{{ $user->name }}</span>
-                                    </div>
-                                </td>
-                                <td>{{ $user->email }}</td>
-                                <td>{{ $user->roles->pluck('name')->join(', ') }}</td>
-                                <td>
-                                    @if($user->is_active)
-                                        <span class="status-badge status-active">Active</span>
-                                    @else
-                                        <span class="status-badge status-inactive">Inactive</span>
-                                    @endif
-                                </td>
-                                <td>{{ $user->created_at->diffForHumans() }}</td>
-                            </tr>
-                            @empty
-                            <tr>
-                                <td colspan="5" class="text-center">No recent new users found.</td>
-                            </tr>
-                            @endforelse
+                            @if(isset($recentUsers) && $recentUsers->isNotEmpty())
+                                @foreach($recentUsers as $user)
+                                <tr>
+                                    <td>
+                                        <div class="d-flex align-items-center">
+                                            <img src="{{ $user->image }}" class="user-avatar-small" alt="">
+                                            <span class="fw-semibold">{{ $user->name }}</span>
+                                        </div>
+                                    </td>
+                                    <td>{{ $user->email }}</td>
+                                    <td>{{ $user->roles->pluck('name')->join(', ') }}</td>
+                                    <td>
+                                        @if($user->is_active)
+                                            <span class="status-badge status-active">Active</span>
+                                        @else
+                                            <span class="status-badge status-inactive">Inactive</span>
+                                        @endif
+                                    </td>
+                                    <td>{{ $user->created_at->diffForHumans() }}</td>
+                                </tr>
+                                @endforeach
+                            @else
+                                <tr>
+                                    <td colspan="5" class="text-center">No recent new users found.</td>
+                                </tr>
+                            @endif
                         </tbody>
                     </table>
                 </div>

@@ -156,7 +156,8 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @forelse($settings as $setting)
+                        @if($settings->count() > 0)
+                            @foreach($settings as $setting)
                             <tr class="setting-row" data-key="{{ $setting->key }}" data-group="{{ $setting->group }}"
                                 data-type="{{ $setting->type }}" data-id="{{ $setting->id }}">
                                 <td>
@@ -206,11 +207,12 @@
                                     </div>
                                 </td>
                             </tr>
-                        @empty
+                            @endforeach
+                        @else
                             <tr>
                                 <td colspan="9" class="text-center">No settings found</td>
                             </tr>
-                        @endforelse
+                        @endif
                     </tbody>
                 </table>
             </div>

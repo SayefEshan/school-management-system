@@ -1,122 +1,114 @@
-# Laravel Project Setup
+# School Management System
+
+A comprehensive school management system built with Laravel 12 and a modular architecture (`nwidart/laravel-modules`). Supports the **Approve-First, Pay-Later** workflow with bilingual (English/Bangla) support.
+
+## Tech Stack
+
+- **Backend:** PHP 8.2+, Laravel 12
+- **Modules:** nwidart/laravel-modules v12
+- **RBAC:** spatie/laravel-permission
+- **Auditing:** owen-it/laravel-auditing
+- **PDF:** mpdf/mpdf
+- **Excel:** rap2hpoutre/fast-excel
+- **Frontend:** Vite, Alpine.js
+- **Database:** MySQL
 
 ## Prerequisites
 
-Ensure you have the following installed:
-
 - PHP >= 8.2
 - Composer
-- Node.js & npm (for compiling assets)
+- Node.js & npm
+- MySQL
 
 ## Installation
 
-1. **Install PHP dependencies:**
-    ```sh
-    composer install
-    ```
+```bash
+# 1. Install PHP dependencies
+composer install
 
-2. **Install JavaScript dependencies:**
-    ```sh
-    npm install
-    ```
+# 2. Install JS dependencies
+npm install
 
-3. **Copy the `.env.example` file to `.env`:**
-    ```sh
-    cp .env.example .env
-    ```
+# 3. Setup environment
+cp .env.example .env
+php artisan key:generate
 
-4. **Generate the application key:**
-    ```sh
-    php artisan key:generate
-    ```
+# 4. Create database and update .env with credentials
+# DB_DATABASE=school_management
 
-5. **Set up the database:**
-    - Update the `.env` file with your database credentials.
-    - Run the migrations:
-    ```sh
-    php artisan migrate
-    ```
+# 5. Run migrations and seed
+php artisan migrate
+php artisan db:seed
 
-6. **Run the development server:**
-    ```sh
-    php artisan serve
-    ```
+# 6. Link storage
+php artisan storage:link
+```
 
-7. **Compile the assets:**
-    ```sh
-    npm run dev
-    ```
+## Development
 
-## Additional Commands
+```bash
+# Run all services (server + queue + logs + vite)
+composer dev
 
-- **Optimize the application:**
-    ```sh
-    php artisan optimize
-    ```
+# Or individually:
+php artisan serve
+npm run dev
+```
 
-- **Optimize clear the application:**
-    ```sh
-    php artisan optimize:clear
-    ```
+## Common Commands
 
-- **Database seeding:**
-    ```sh
-    php artisan db:seed
-    ```
+```bash
+# Database
+php artisan migrate:fresh --seed       # Reset database
+php artisan db:seed                    # Seed all data
+php artisan db:seed --class=PermissionSeeder  # Seed permissions only
 
-- **Permission Seeding:**
-    ```sh
-    php artisan db:seed --class=PermissionSeeder
-    ```
+# Modules
+php artisan module:list                # List all modules
+php artisan module:make ModuleName     # Create new module
+php artisan module:seed ModuleName     # Seed specific module
+php artisan module:seed --class=ClassName ModuleName  # Run specific seeder
 
-- **Run tests:**
-    ```sh
-    php artisan test
-    ```
+# Code Quality
+./vendor/bin/pint                      # Format code (Laravel Pint)
+php artisan test                       # Run tests
 
-- **Clear application cache:**
-    ```sh
-    php artisan cache:clear
-    ```
+# Cache
+php artisan optimize:clear             # Clear all caches
 
-- **Clear configuration cache:**
-    ```sh
-    php artisan config:clear
-    ```
+# IDE Helper
+php artisan ide-helper:generate
+php artisan ide-helper:meta
+php artisan ide-helper:models
+```
 
-- **Clear route cache:**
-    ```sh
-    php artisan route:clear
-    ```
+## Architecture
 
-- **Clear view cache:**
-    ```sh
-    php artisan view:clear
-    ```
-- **Storage Connection:**
-    ```sh
-    php artisan storage:link
-    ```
+```
+Modules/
+├── ActivityLog/          # Audit trails (owen-it/laravel-auditing)
+├── BackupCleanup/        # Database backup management
+├── ImportDownloadManager/ # Excel import/export
+├── Notification/         # Email & SMS notifications
+├── PushNotification/     # Firebase push notifications
+├── RolePermission/       # Roles & permissions (spatie)
+├── Settings/             # System settings
+├── User/                 # User management & profiles
+├── Admission/            # (To be created) Application submission & review
+├── Student/              # (To be created) Student profiles & enrollment
+├── ClassManagement/      # (To be created) Classes, sections, schedules
+└── FeeCollection/        # (To be created) Fee management & payment
+```
 
-- **Queue Worker Run:**
-    ```sh
-    php artisan queue:work
-    ```
-- **Module Spcific Seeder:**
-    ```sh
-    php artisan module:seed --class=ClassName ModuleName
-    ```
+## Key Workflows
 
-- **Get All Route List:**
-    ```sh
-    php artisan route:list
-    ```
+1. **Admission → Student:** Application submitted → Admin reviews → Approved → Student record auto-created
+2. **Fee Collection:** Student created → Fees initialized (pending) → Payment collected → Receipt generated
+3. **Student ID Format:** `YYCCSSSSS` (Year + Class Code + Serial)
 
-- **Run with Tinker:**
-    ```sh
-    (new \Modules\Settings\database\seeders\SeederName)->run();
-    ```
-- **Dispatch Job with Tinker:**
-    ```sh
-    App\Jobs\JobName::dispatch();
-    ```
+## Testing
+
+```bash
+php artisan test                       # Run all tests
+php artisan test Modules/ModuleName/tests/  # Run module tests
+```

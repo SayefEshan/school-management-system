@@ -18,7 +18,6 @@ Route::prefix('v1')->group(function () {
     Route::post('login', [UserController::class, 'login']);
     Route::post('register', [UserController::class, 'register']);
     Route::post('reset-password', [UserController::class, 'resetPassword']);
-    Route::post('auth/social', [UserController::class, 'socialAuth']);
 
     Route::middleware('auth:sanctum')->group(function () {
         Route::get('user/documents', [\Modules\User\Http\Controllers\Api\UserDocumentController::class, 'index']);

@@ -3,9 +3,9 @@
     "BackupCleanup": true,
     "ImportDownloadManager": true,
     "Notification": true,
-    "Otp": true,
     "PushNotification": true,
     "RolePermission": true,
     "Settings": true,
-    "User": true
+    "User": true,
+    "Admission": true
 }

@@ -1,6 +1,7 @@
 
+# Development Notes — School Management System
 
-# Laravel IDE Helper
+## IDE Helper
 
 ```bash
 php artisan ide-helper:generate
@@ -8,21 +9,21 @@ php artisan ide-helper:meta
 php artisan ide-helper:models
 ```
 
-# Steps after creating a new module
+## Steps After Creating a New Module
 
 ### 1. Create the module
 
 ```bash
-php artisan make:module RolePermission
+php artisan module:make ModuleName
 ```
 
-### 2. Run Dump Autoload
+### 2. Dump autoload and migrate
 
 ```bash
 composer dump-autoload
-```
-
-```bash
 php artisan migrate
 ```
 
+### 3. Register permissions (if applicable)
+
+Create a permission seeder in the module and add it to `database/seeders/PermissionSeeder.php`.

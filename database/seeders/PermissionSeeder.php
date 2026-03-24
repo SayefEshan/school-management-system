@@ -40,8 +40,8 @@ class PermissionSeeder extends Seeder
             'module' => 'ImportDownloadManager'
         ]);
         Artisan::call('module:seed', [
-            '--class' => 'OtpPermissionSeeder',
-            'module' => 'Otp'
+            '--class' => 'AdmissionPermissionSeeder',
+            'module' => 'Admission'
         ]);
     }
 }

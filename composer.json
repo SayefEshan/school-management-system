@@ -1,10 +1,12 @@
 {
-    "name": "laravel/laravel",
+    "name": "jago/school-management-system",
     "type": "project",
-    "description": "The skeleton application for the Laravel framework.",
+    "description": "A comprehensive school management system built with Laravel 12 and modular architecture.",
     "keywords": [
         "laravel",
-        "framework"
+        "school-management",
+        "education",
+        "bangladesh"
     ],
     "license": "MIT",
     "require": {

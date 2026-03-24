@@ -5,8 +5,6 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Artisan;
 
-// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
-
 class DatabaseSeeder extends Seeder
 {
     /**
@@ -23,6 +21,6 @@ class DatabaseSeeder extends Seeder
         Artisan::call('module:seed', ['module' => 'ActivityLog']);
         Artisan::call('module:seed', ['module' => 'BackupCleanup']);
         Artisan::call('module:seed', ['module' => 'PushNotification']);
-        Artisan::call('module:seed', ['module' => 'Otp']);
+        Artisan::call('module:seed', ['module' => 'Admission']);
     }
 }

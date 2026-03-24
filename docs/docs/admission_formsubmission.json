@@ -1,0 +1,198 @@
+{
+  "admissionFormSubmission": {
+    "studentInformation": {
+      "studentNameBangla": "string - Student name in Bangla",
+      "studentNameEnglish": "string - Student name in English",
+      "birthRegistrationNumber": "string - Birth Registration Number (sbr)",
+      "dateOfBirth": "string - Date of birth in YYYY-MM-DD format",
+      "studentPhoto": "file - Student photo file (image, max 50KB, 300x300px recommended)",
+      "religion": "string - Religion value (rel1, rel2, rel3, rel4)",
+      "gender": "string - Gender value (gen1, gen2, gen3)",
+      "ethnicity": "string - Ethnicity/Caste value (cust1, cust2)",
+      "applyingForClass": "string - Class applying for (ষষ্ঠ, সপ্তম, অষ্টম, নবম, দশম)",
+      "previousClass": "string - Previous class completed (পঞ্চম, ষষ্ঠ, সপ্তম, অষ্টম, নবম)",
+      "previousResult": "string - Previous class result/GPA"
+    },
+    "fatherInformation": {
+      "fatherNameBangla": "string - Father's name in Bangla",
+      "fatherNameEnglish": "string - Father's name in English",
+      "fatherNID": "string - Father's National ID number",
+      "fatherPhone": "string - Father's phone number",
+      "fatherOccupation": "string - Father's occupation code (1-7)"
+    },
+    "motherInformation": {
+      "motherNameBangla": "string - Mother's name in Bangla",
+      "motherNameEnglish": "string - Mother's name in English",
+      "motherNID": "string - Mother's National ID number",
+      "motherPhone": "string - Mother's phone number",
+      "motherOccupation": "string - Mother's occupation code (1-4)"
+    },
+    "guardianInformation": {
+      "whoGuardian": "string - Who is guardian (whoguard1=Father, whoguard2=Mother, whoguard3=Other)",
+      "guardianName": "string - Guardian's name in Bangla (only if whoGuardian is whoguard3)",
+      "guardianNameEnglish": "string - Guardian's name in English (only if whoGuardian is whoguard3)",
+      "guardianNID": "string - Guardian's NID (only if whoGuardian is whoguard3)",
+      "guardianPhone": "string - Guardian's phone (only if whoGuardian is whoguard3)",
+      "guardianOccupation": "string - Guardian's occupation code 1-8 (only if whoGuardian is whoguard3)",
+      "guardianRelation": "string - Relation with guardian code 1-15 (only if whoGuardian is whoguard3)",
+      "guardianYearlyIncome": "string - Guardian's yearly income (only if whoGuardian is whoguard3)"
+    },
+    "presentAddress": {
+      "village": "string - Village/Area name (গ্রাম/মহল্লা)",
+      "postOffice": "string - Post Office name (ডাকঘর)",
+      "policeStation": "string - Police Station/Thana name (থানা)",
+      "upazila": "string - Upazila name (উপজেলা)",
+      "district": "string - District name (জেলা)"
+    },
+    "permanentAddress": {
+      "sameAsPresent": "boolean - Whether permanent address is same as present address",
+      "village": "string - Village/Area name (গ্রাম/মহল্লা)",
+      "postOffice": "string - Post Office name (ডাকঘর)",
+      "policeStation": "string - Police Station/Thana name (থানা)",
+      "upazila": "string - Upazila name (উপজেলা)",
+      "district": "string - District name (জেলা)"
+    },
+    "contactInformation": {
+      "primaryPhone": "string - Primary mobile number for communications",
+      "email": "string - Email address"
+    },
+    "documents": {
+      "academicTranscript": "file - Academic transcript/certificate (image or PDF, max 200KB)",
+      "birthCertificate": "file - Birth certificate (image or PDF, max 200KB)"
+    },
+    "termsAccepted": "boolean - Whether terms and conditions are accepted",
+    "submissionMetadata": {
+      "applicationTime": "string - ISO 8601 datetime when form was submitted",
+      "locale": "string - Language locale (bn or en)",
+      "ipAddress": "string - IP address of submitter (server-side)",
+      "userAgent": "string - Browser user agent (server-side)"
+    }
+  },
+  "example": {
+    "studentInformation": {
+      "studentNameBangla": "মোঃ আবদুল করিম",
+      "studentNameEnglish": "Md. Abdul Karim",
+      "birthRegistrationNumber": "12345678901234567",
+      "dateOfBirth": "2010-05-15",
+      "studentPhoto": "base64_or_file_reference",
+      "religion": "rel1",
+      "gender": "gen1",
+      "ethnicity": "cust1",
+      "applyingForClass": "ষষ্ঠ",
+      "previousClass": "পঞ্চম",
+      "previousResult": "জিপিএ ৫.০০"
+    },
+    "fatherInformation": {
+      "fatherNameBangla": "মোঃ আবদুর রহমান",
+      "fatherNameEnglish": "Md. Abdur Rahman",
+      "fatherNID": "1234567890123",
+      "fatherPhone": "01712345678",
+      "fatherOccupation": "1"
+    },
+    "motherInformation": {
+      "motherNameBangla": "মোসাম্মৎ রোকেয়া বেগম",
+      "motherNameEnglish": "Mst. Rokeya Begum",
+      "motherNID": "9876543210987",
+      "motherPhone": "01798765432",
+      "motherOccupation": "1"
+    },
+    "guardianInformation": {
+      "whoGuardian": "whoguard1",
+      "guardianName": "",
+      "guardianNameEnglish": "",
+      "guardianNID": "",
+      "guardianPhone": "",
+      "guardianOccupation": "",
+      "guardianRelation": "",
+      "guardianYearlyIncome": ""
+    },
+    "presentAddress": {
+      "village": "মির্জাপুর",
+      "postOffice": "মির্জাপুর",
+      "policeStation": "গাজীপুর সদর",
+      "upazila": "গাজীপুর সদর",
+      "district": "গাজীপুর"
+    },
+    "permanentAddress": {
+      "sameAsPresent": true,
+      "village": "মির্জাপুর",
+      "postOffice": "মির্জাপুর",
+      "policeStation": "গাজীপুর সদর",
+      "upazila": "গাজীপুর সদর",
+      "district": "গাজীপুর"
+    },
+    "contactInformation": {
+      "primaryPhone": "01712345678",
+      "email": "abdulkarim@example.com"
+    },
+    "documents": {
+      "academicTranscript": "base64_or_file_reference",
+      "birthCertificate": "base64_or_file_reference"
+    },
+    "termsAccepted": true,
+    "submissionMetadata": {
+      "applicationTime": "2025-01-13T10:30:00Z",
+      "locale": "bn",
+      "ipAddress": "103.100.200.50",
+      "userAgent": "Mozilla/5.0..."
+    }
+  },
+  "validationRules": {
+    "studentNameBangla": "required|string|max:255",
+    "studentNameEnglish": "required|string|max:255",
+    "birthRegistrationNumber": "required|string|length:17",
+    "dateOfBirth": "required|date|before:today",
+    "studentPhoto": "required|file|image|max:50",
+    "religion": "required|in:rel1,rel2,rel3,rel4",
+    "gender": "required|in:gen1,gen2,gen3",
+    "ethnicity": "required|in:cust1,cust2",
+    "applyingForClass": "required|string",
+    "previousClass": "required|string",
+    "previousResult": "required|string|max:50",
+    "fatherNameBangla": "required|string|max:255",
+    "fatherNameEnglish": "required|string|max:255",
+    "fatherNID": "required|string|length:10,13,17",
+    "fatherPhone": "required|string|regex:/^01[3-9]\\d{8}$/",
+    "fatherOccupation": "required|in:1,2,3,4,5,6,7",
+    "motherNameBangla": "required|string|max:255",
+    "motherNameEnglish": "required|string|max:255",
+    "motherNID": "required|string|length:10,13,17",
+    "motherPhone": "required|string|regex:/^01[3-9]\\d{8}$/",
+    "motherOccupation": "required|in:1,2,3,4",
+    "whoGuardian": "required|in:whoguard1,whoguard2,whoguard3",
+    "guardianName": "required_if:whoGuardian,whoguard3|string|max:255",
+    "guardianNameEnglish": "required_if:whoGuardian,whoguard3|string|max:255",
+    "guardianNID": "required_if:whoGuardian,whoguard3|string|length:10,13,17",
+    "guardianPhone": "required_if:whoGuardian,whoguard3|string|regex:/^01[3-9]\\d{8}$/",
+    "guardianOccupation": "required_if:whoGuardian,whoguard3|in:1,2,3,4,5,6,7,8",
+    "guardianRelation": "required_if:whoGuardian,whoguard3|in:1,2,3,4,5,6,7,8,9,10,11,12,13,14,15",
+    "guardianYearlyIncome": "required_if:whoGuardian,whoguard3|string|max:50",
+    "presentAddress.village": "required|string|max:255",
+    "presentAddress.postOffice": "required|string|max:255",
+    "presentAddress.policeStation": "required|string|max:255",
+    "presentAddress.upazila": "required|string|max:255",
+    "presentAddress.district": "required|string|max:255",
+    "permanentAddress.sameAsPresent": "required|boolean",
+    "permanentAddress.village": "required|string|max:255",
+    "permanentAddress.postOffice": "required|string|max:255",
+    "permanentAddress.policeStation": "required|string|max:255",
+    "permanentAddress.upazila": "required|string|max:255",
+    "permanentAddress.district": "required|string|max:255",
+    "primaryPhone": "required|string|regex:/^01[3-9]\\d{8}$/",
+    "email": "required|email|max:255",
+    "academicTranscript": "required|file|mimes:jpg,jpeg,png,pdf|max:200",
+    "birthCertificate": "required|file|mimes:jpg,jpeg,png,pdf|max:200",
+    "termsAccepted": "required|accepted"
+  },
+  "notes": {
+    "fileHandling": "Files should be uploaded as multipart/form-data. Backend should validate file types, sizes, and scan for malware.",
+    "conditionalFields": "Guardian fields (guardianName, guardianNameEnglish, guardianNID, guardianPhone, guardianOccupation, guardianRelation, guardianYearlyIncome) are only required when whoGuardian is 'whoguard3' (Other).",
+    "addressHandling": "When permanentAddress.sameAsPresent is true, backend should copy all present address fields to permanent address fields.",
+    "bangladeshiPhoneFormat": "Phone numbers must start with 01 followed by 3-9 and then 8 more digits (total 11 digits).",
+    "nidFormats": "Bangladesh NID can be 10, 13, or 17 digits.",
+    "birthRegistrationFormat": "Birth registration number is exactly 17 digits.",
+    "responseFormat": "On successful submission, backend should return: { success: true, applicationId: 'unique_id', message: 'Application submitted successfully', pdf_url: 'url_to_generated_pdf' }",
+    "errorFormat": "On validation error: { success: false, errors: { field: ['error messages'] } }",
+    "statusCodes": "201 for successful creation, 422 for validation errors, 500 for server errors"
+  }
+}
